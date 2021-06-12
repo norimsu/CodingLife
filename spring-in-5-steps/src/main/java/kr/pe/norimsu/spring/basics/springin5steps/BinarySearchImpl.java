@@ -1,16 +1,18 @@
 package kr.pe.norimsu.spring.basics.springin5steps;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class BinarySearchImpl {
 
 	@Autowired      // Setter Injection - No Setter & Constructor
+	@Qualifier("quick")
 	private SortAlgorithm sortAlgorithm; // use variable name 'bubbleSortAlgorithm'
 
 //	//@Autowired    // Construction Injection via Constructor
-//	public BinarySearchImpl(SortAlgorithm sortAlgorithm) {
+//	public BinarySearchImpl(@Qualifier("quick") SortAlgorithm sortAlgorithm) {
 //		this.sortAlgorithm = sortAlgorithm;
 //	}
 
