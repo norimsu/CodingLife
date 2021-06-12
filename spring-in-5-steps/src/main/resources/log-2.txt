@@ -1,0 +1,18 @@
+// 2 @Primary
+Caused by: org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type 'kr.pe.norimsu.spring.basics.springin5steps.SortAlgorithm' available: more than one 'primary' bean found among candidates: [bubbleSortAlgorithm, quickSortAlgorithm]
+
+
+// No qualifying bean - several bean
+org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type 'kr.pe.norimsu.spring.basics.springin5steps.SortAlgorithm' available: expected single matching bean but found 2: bubbleSortAlgorithm,quickSortAlgorithm
+
+Field sortAlgorithm in kr.pe.norimsu.spring.basics.springin5steps.BinarySearchImpl required a single bean, but 2 were found:
+	- bubbleSortAlgorithm: defined in file [/Users/norimsu/Documents/git/CodingLife/spring-in-5-steps/target/classes/kr/pe/norimsu/spring/basics/springin5steps/BubbleSortAlgorithm.class]
+	- quickSortAlgorithm: defined in file [/Users/norimsu/Documents/git/CodingLife/spring-in-5-steps/target/classes/kr/pe/norimsu/spring/basics/springin5steps/QuickSortAlgorithm.class]
+
+// No qualifying bean - No bean
+org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'kr.pe.norimsu.spring.basics.springin5steps.SortAlgorithm' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+
+Field sortAlgorithm in kr.pe.norimsu.spring.basics.springin5steps.BinarySearchImpl required a bean of type 'kr.pe.norimsu.spring.basics.springin5steps.SortAlgorithm' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)

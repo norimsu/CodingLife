@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class BinarySearchImpl {
 
 	@Autowired      // Setter Injection - No Setter & Constructor
-	private SortAlgorithm bubbleSortAlgorithm; // use variable name
+	private SortAlgorithm sortAlgorithm; // use variable name 'bubbleSortAlgorithm'
 
 //	//@Autowired    // Construction Injection via Constructor
 //	public BinarySearchImpl(SortAlgorithm sortAlgorithm) {
@@ -20,8 +20,8 @@ public class BinarySearchImpl {
 //	}
 
 	public int binarySearch(int[] numbers, int numberToSearchFor) {
-		final int[] sortedNumbers = bubbleSortAlgorithm.sort(numbers);
-		System.out.println("sortAlgorithm = " + bubbleSortAlgorithm);
+		final int[] sortedNumbers = sortAlgorithm.sort(numbers);
+		System.out.println("sortAlgorithm = " + sortAlgorithm);
 		// Search the array
 		return 3;
 	}
