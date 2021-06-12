@@ -22,6 +22,7 @@ TRACE 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Cre
 TRACE 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Finished creating instance of bean 'bubbleSortAlgorithm'
 DEBUG 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Autowiring by type from bean name 'binarySearchImpl' via constructor to bean named 'bubbleSortAlgorithm'
 TRACE 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Finished creating instance of bean 'binarySearchImpl'
+// use singleton bean
 TRACE 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'bubbleSortAlgorithm'
 
 // applicationContext load done
@@ -29,3 +30,32 @@ TRACE 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Ret
 
 // use singleton bean
 TRACE 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'binarySearchImpl'
+
+
+---
+
+// create my bean
+DEBUG 40819 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'binarySearchImpl'
+TRACE 40819 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Creating instance of bean 'binarySearchImpl'
+TRACE 40819 --- [           main] o.s.beans.CachedIntrospectionResults     : Getting BeanInfo for class [kr.pe.norimsu.spring.basics.springin5steps.BinarySearchImpl]
+TRACE 40819 --- [           main] o.s.beans.CachedIntrospectionResults     : Caching PropertyDescriptors for class [kr.pe.norimsu.spring.basics.springin5steps.BinarySearchImpl]
+TRACE 40819 --- [           main] o.s.beans.CachedIntrospectionResults     : Found bean property 'sortAlgorithm' of type [kr.pe.norimsu.spring.basics.springin5steps.SortAlgorithm]
+DEBUG 40819 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'bubbleSortAlgorithm'
+TRACE 40819 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Creating instance of bean 'bubbleSortAlgorithm'
+TRACE 40819 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Finished creating instance of bean 'bubbleSortAlgorithm'
+TRACE 40819 --- [           main] f.a.AutowiredAnnotationBeanPostProcessor : Autowiring by type from bean name 'binarySearchImpl' to bean named 'bubbleSortAlgorithm'
+TRACE 40819 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Finished creating instance of bean 'binarySearchImpl'
+// use singleton bean
+TRACE 40819 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'bubbleSortAlgorithm'
+
+---
+
+
+// constructor injection
+DEBUG 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Autowiring by type from bean name 'binarySearchImpl' via constructor to bean named 'bubbleSortAlgorithm'
+
+// setter injection
+TRACE 40819 --- [           main] f.a.AutowiredAnnotationBeanPostProcessor : Autowiring by type from bean name 'binarySearchImpl' to bean named 'bubbleSortAlgorithm'
+
+// no setter & constructor
+TRACE 41112 --- [           main] f.a.AutowiredAnnotationBeanPostProcessor : Autowiring by type from bean name 'binarySearchImpl' to bean named 'bubbleSortAlgorithm'
