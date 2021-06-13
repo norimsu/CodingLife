@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("kr.pe.norimsu.spring.basics.springin5steps.scope")
+@ComponentScan
 public class SpringIn5StepsScopeApplication {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(SpringIn5StepsScopeApplication.class);

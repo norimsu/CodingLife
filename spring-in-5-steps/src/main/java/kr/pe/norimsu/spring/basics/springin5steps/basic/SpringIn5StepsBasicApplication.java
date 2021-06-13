@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("kr.pe.norimsu.spring.basics.springin5steps.basic")
+@ComponentScan
 public class SpringIn5StepsBasicApplication {
 
 	// What are the beans?                  => @Component
