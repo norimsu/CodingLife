@@ -1,10 +1,12 @@
 package kr.pe.norimsu.spring.basics.springin5steps.basic;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
+@Configuration
+@ComponentScan("kr.pe.norimsu.spring.basics.springin5steps.basic")
 public class SpringIn5StepsBasicApplication {
 
 	// What are the beans?                  => @Component
@@ -15,7 +17,7 @@ public class SpringIn5StepsBasicApplication {
 		//final BinarySearchImpl binarySearch = new BinarySearchImpl(new QuickSortAlgorithm());
 
 		// Application Context
-		final ConfigurableApplicationContext applicationContext = SpringApplication.run(SpringIn5StepsBasicApplication.class, args);
+		final ConfigurableApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringIn5StepsBasicApplication.class);
 
 //		applicationContext.registerShutdownHook();
 
