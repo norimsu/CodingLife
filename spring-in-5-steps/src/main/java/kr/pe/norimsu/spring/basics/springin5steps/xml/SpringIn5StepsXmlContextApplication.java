@@ -12,6 +12,21 @@ public class SpringIn5StepsXmlContextApplication {
 
 		try (final ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml")) {
 
+			LOGGER.info("Bean Loaded -> {}", (Object) applicationContext.getBeanDefinitionNames());
+			// [xmlJdbcConnection, xmlPersonDao]
+
+			// [componentDao, scopedTarget.componentJdbcConnection, componentJdbcConnection,
+			// springIn5StepsComponentScanApplication, binarySearchImpl, bubbleSortAlgorithm,
+			// quickSortAlgorithm, springIn5StepsBasicApplication, someCdiBusiness, someCdiDao,
+			// springIn5StepsCdiApplication, scopedTarget.jdbcConnection, jdbcConnection, personDao,
+			// springIn5StepsScopeApplication,
+			// org.springframework.context.annotation.internalConfigurationAnnotationProcessor,
+			// org.springframework.context.annotation.internalAutowiredAnnotationProcessor,
+			// org.springframework.context.annotation.internalCommonAnnotationProcessor,
+			// org.springframework.context.event.internalEventListenerProcessor,
+			// org.springframework.context.event.internalEventListenerFactory,
+			// xmlJdbcConnection, xmlPersonDao]
+
 			final XmlPersonDao personDao = applicationContext.getBean(XmlPersonDao.class);
 			final XmlPersonDao personDaoTwo = applicationContext.getBean(XmlPersonDao.class);
 
