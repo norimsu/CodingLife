@@ -18,4 +18,15 @@ public class SomeCdiBusiness {
 	public void setSomeCDIDao(SomeCdiDao someCDIDao) {
 		this.someCDIDao = someCDIDao;
 	}
+
+	public int findGreatest() {
+		int greatest = Integer.MIN_VALUE;
+		final int[] data = someCDIDao.getData();
+		for (int value : data) {
+			if (value > greatest) {
+				greatest = value;
+			}
+		}
+		return greatest;
+	}
 }

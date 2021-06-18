@@ -6,4 +6,9 @@ import javax.inject.Named;
 @Named
 public class SomeCdiDao {
 
+	public int[] getData() {
+		// in real. it depends on dataSource.
+		return new int[] {5, 89, 100};
+	}
+
 }
