@@ -11,7 +11,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 //Load the context
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(locations = "/applicationContext.xml")
+@ContextConfiguration(locations = "/testContext.xml")
 class BinarySearchXmlConfigurationTest {
 
 	//Get this bean from the context
