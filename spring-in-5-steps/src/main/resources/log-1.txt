@@ -1,0 +1,61 @@
+DEBUG 31890 --- [           main] o.s.boot.SpringApplication               : Loading source class kr.pe.norimsu.spring.basics.springin5steps.SpringIn5StepsApplication
+DEBUG 31890 --- [           main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@815b41f
+DEBUG 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+DEBUG 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.internalCachingMetadataReaderFactory'
+TRACE 31890 --- [           main] o.s.c.io.support.SpringFactoriesLoader   : Loaded [org.springframework.beans.BeanInfoFactory] names: [org.springframework.beans.ExtendedBeanInfoFactory]
+
+// search
+TRACE 31890 --- [           main] .i.s.PathMatchingResourcePatternResolver : Searching directory [/Users/norimsu/Documents/git/CodingLife/spring-in-5-steps/target/classes/kr/pe/norimsu/spring/basics/springin5steps] for files matching pattern [/Users/norimsu/Documents/git/CodingLife/spring-in-5-steps/target/classes/kr/pe/norimsu/spring/basics/springin5steps/**/*.class]
+
+// scan
+DEBUG 31890 --- [           main] o.s.c.a.ClassPathBeanDefinitionScanner   : Identified candidate component class: file [/Users/norimsu/Documents/git/CodingLife/spring-in-5-steps/target/classes/kr/pe/norimsu/spring/basics/springin5steps/BinarySearchImpl.class]
+DEBUG 31890 --- [           main] o.s.c.a.ClassPathBeanDefinitionScanner   : Identified candidate component class: file [/Users/norimsu/Documents/git/CodingLife/spring-in-5-steps/target/classes/kr/pe/norimsu/spring/basics/springin5steps/BubbleSortAlgorithm.class]
+
+// create configuration
+DEBUG 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'springIn5StepsApplication'
+
+// create my bean
+DEBUG 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'binarySearchImpl'
+TRACE 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Creating instance of bean 'binarySearchImpl'
+DEBUG 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'bubbleSortAlgorithm'
+TRACE 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Creating instance of bean 'bubbleSortAlgorithm'
+TRACE 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Finished creating instance of bean 'bubbleSortAlgorithm'
+DEBUG 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Autowiring by type from bean name 'binarySearchImpl' via constructor to bean named 'bubbleSortAlgorithm'
+TRACE 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Finished creating instance of bean 'binarySearchImpl'
+// use singleton bean
+TRACE 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'bubbleSortAlgorithm'
+
+// applicationContext load done
+ INFO 31890 --- [           main] k.p.n.s.b.s.SpringIn5StepsApplication    : Started SpringIn5StepsApplication in 0.714 seconds (JVM running for 1.121)
+
+// use singleton bean
+TRACE 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'binarySearchImpl'
+
+
+---
+
+// create my bean
+DEBUG 40819 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'binarySearchImpl'
+TRACE 40819 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Creating instance of bean 'binarySearchImpl'
+TRACE 40819 --- [           main] o.s.beans.CachedIntrospectionResults     : Getting BeanInfo for class [kr.pe.norimsu.spring.basics.springin5steps.BinarySearchImpl]
+TRACE 40819 --- [           main] o.s.beans.CachedIntrospectionResults     : Caching PropertyDescriptors for class [kr.pe.norimsu.spring.basics.springin5steps.BinarySearchImpl]
+TRACE 40819 --- [           main] o.s.beans.CachedIntrospectionResults     : Found bean property 'sortAlgorithm' of type [kr.pe.norimsu.spring.basics.springin5steps.SortAlgorithm]
+DEBUG 40819 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'bubbleSortAlgorithm'
+TRACE 40819 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Creating instance of bean 'bubbleSortAlgorithm'
+TRACE 40819 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Finished creating instance of bean 'bubbleSortAlgorithm'
+TRACE 40819 --- [           main] f.a.AutowiredAnnotationBeanPostProcessor : Autowiring by type from bean name 'binarySearchImpl' to bean named 'bubbleSortAlgorithm'
+TRACE 40819 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Finished creating instance of bean 'binarySearchImpl'
+// use singleton bean
+TRACE 40819 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'bubbleSortAlgorithm'
+
+---
+
+
+// constructor injection
+DEBUG 31890 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Autowiring by type from bean name 'binarySearchImpl' via constructor to bean named 'bubbleSortAlgorithm'
+
+// setter injection
+TRACE 40819 --- [           main] f.a.AutowiredAnnotationBeanPostProcessor : Autowiring by type from bean name 'binarySearchImpl' to bean named 'bubbleSortAlgorithm'
+
+// no setter & constructor
+TRACE 41112 --- [           main] f.a.AutowiredAnnotationBeanPostProcessor : Autowiring by type from bean name 'binarySearchImpl' to bean named 'bubbleSortAlgorithm'
