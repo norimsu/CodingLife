@@ -1,0 +1,48 @@
+//ifndef::snippets[]
+//:snippets: ../../../target/generated-snippets
+//endif::[]
+
+//== Request
+//
+//CURL:
+//
+//include::{snippets}/user/curl-request.adoc[]
+//
+//Request Parameters:
+//
+//include::{snippets}/user/path-parameters.adoc[]
+//
+//Request HTTP example:
+//
+//include::{snippets}/user/http-request.adoc[]
+//
+//=== Response
+//
+//Response Fields:
+//
+//include::{snippets}/user/response-fields.adoc[]
+//
+//Response HTTP example:
+//
+//include::{snippets}/user/http-response.adoc[]
+
+//---
+
+:basedir: {docdir}/../../../
+:snippets: {basedir}/target/generated-snippets
+
+= RESTful Notes API Guide
+
+:doctype: user
+:icons: font
+:source-highlighter: highlight.js
+:toc: left
+:toclevels: 4
+:sectnums:
+:sectlinks:
+:sectanchors:
+
+[[api]]
+== User Api
+
+operation::user[snippets='curl-request,http-request,path-parameters,http-response,response-fields']
