@@ -53,15 +53,11 @@ public class Customer {
      * @return 적립 포인트
      */
     private int getFrequentRenterPoints(Rental each) {
-        int point = 0;
-
-        // 적립 포인트를 1 포인트 증가
-        point++;
-
-        // 최신물을 이틀 이상 대여하면 보너스 포인트 지급
+        // 최신물을 이틀 이상 대여하면 2 포인트 지급 그 외엔 1포인트를 지급
         if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && each.getDaysRented() > 1) {
-            point++;
+            return 2;
+        } else {
+            return 1;
         }
-        return point;
     }
 }
