@@ -28,7 +28,7 @@ class CustomerTest {
         movie_c = new Movie(MOVIE_TITLE_C, Movie.CHILDREN);
     }
 
-    @DisplayName("대여 안했을 때")
+    @DisplayName("대여 안했을 때 Statement")
     @Test
     void statement_withNoRental() {
         //@formatter:off
@@ -39,7 +39,7 @@ class CustomerTest {
         then(customer.statement()).isEqualTo(expected);
     }
 
-    @DisplayName("일반 영화 대여했을 때")
+    @DisplayName("일반 영화 대여했을 때 Statement")
     @ParameterizedTest(name = "[{index}] when renting movie A with {0}days, total price is {1} and point is {2}")
     @CsvSource(value = {"1:2.0:1", "3:3.5:1", "5:6.5:1"}, delimiter = ':')
     void statement_withRental_MovieA(int daysRented, double expectedPrice, int expectedPoint) {
@@ -53,7 +53,7 @@ class CustomerTest {
         then(customer.statement()).isEqualTo(expected);
     }
 
-    @DisplayName("신규 영화 대여했을 때")
+    @DisplayName("신규 영화 대여했을 때 Statement")
     @ParameterizedTest(name = "[{index}] when renting movie B with {0}days, total price is {1} and point is {2}")
     @CsvSource(value = {"1:3.0:1", "3:9.0:2", "5:15.0:2"}, delimiter = ':')
     void statement_withRental_MovieB(int daysRented, double expectedPrice, int expectedPoint) {
@@ -67,7 +67,7 @@ class CustomerTest {
         then(customer.statement()).isEqualTo(expected);
     }
 
-    @DisplayName("아동 영화 대여했을 때")
+    @DisplayName("아동 영화 대여했을 때 Statement")
     @ParameterizedTest(name = "[{index}] when renting movie C with {0}days, total price is {1} and point is {2}")
     @CsvSource(value = {"1:1.5:1", "3:1.5:1", "5:4.5:1"}, delimiter = ':')
     void statement_withRental_MovieC(int daysRented, double expectedPrice, int expectedPoint) {
@@ -81,7 +81,7 @@ class CustomerTest {
         then(customer.statement()).isEqualTo(expected);
     }
 
-    @DisplayName("모든 영화 대여했을 때")
+    @DisplayName("모든 영화 대여했을 때 Statement")
     @ParameterizedTest(name = "[{index}] when renting All with {0}days, point is {4}")
     @CsvSource(value = {"1:2.0:3.0:1.5:3", "3:3.5:9.0:1.5:4", "5:6.5:15.0:4.5:4"}, delimiter = ':')
         //@formatter:off
@@ -105,5 +105,42 @@ class CustomerTest {
         customer.addRental(new Rental(movie_b, daysRented));
         customer.addRental(new Rental(movie_c, daysRented));
         then(customer.statement()).isEqualTo(expected);
+    }
+
+    @DisplayName("대여 안했을 때 HTML Statement")
+    @Test
+    void htmlStatement_withNoRental() {
+        //@formatter:off
+        String expected = "<h1><em>" + NAME + "고객님의 대여 기록</em></h1><p>\n" +
+                "<p>누적 대여료: <em>0.0</em><p>\n" +
+                "적립 포인트: <em>0</em><p>";
+        //@formatter:on
+        then(customer.htmlStatement()).isEqualTo(expected);
+    }
+
+    @DisplayName("모든 영화 대여했을 때 HTML Statement")
+    @ParameterizedTest(name = "[{index}] when renting All with {0}days, point is {4}")
+    @CsvSource(value = {"1:2.0:3.0:1.5:3", "3:3.5:9.0:1.5:4", "5:6.5:15.0:4.5:4"}, delimiter = ':')
+        //@formatter:off
+    void htmlStatement_withRental_All(
+            int daysRented,
+            double expectedPriceA,
+            double expectedPriceB,
+            double expectedPriceC,
+            int expectedPoint) {
+        //@formatter:on
+        final double expectedPrice = expectedPriceA + expectedPriceB + expectedPriceC;
+        //@formatter:off
+        String expected = "<h1><em>" + NAME + "고객님의 대여 기록</em></h1><p>\n" +
+                MOVIE_TITLE_A + ": " + expectedPriceA + "<br>\n" +
+                MOVIE_TITLE_B + ": " + expectedPriceB + "<br>\n" +
+                MOVIE_TITLE_C + ": " + expectedPriceC + "<br>\n" +
+                "<p>누적 대여료: <em>" + expectedPrice + "</em><p>\n" +
+                "적립 포인트: <em>" + expectedPoint + "</em><p>";
+        //@formatter:on
+        customer.addRental(new Rental(movie_a, daysRented));
+        customer.addRental(new Rental(movie_b, daysRented));
+        customer.addRental(new Rental(movie_c, daysRented));
+        then(customer.htmlStatement()).isEqualTo(expected);
     }
 }
