@@ -46,4 +46,17 @@ public class Rental {
         }
         return result;
     }
+
+    /**
+     * 적립 포인트 계산
+     * @return 적립 포인트
+     */
+    int getFrequentRenterPoints() {
+        // 최신물을 이틀 이상 대여하면 2 포인트 지급 그 외엔 1포인트를 지급
+        if ((getMovie().getPriceCode() == Movie.NEW_RELEASE) && getDaysRented() > 1) {
+            return 2;
+        } else {
+            return 1;
+        }
+    }
 }
