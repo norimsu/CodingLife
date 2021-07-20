@@ -32,24 +32,8 @@ public class Customer {
             double thisAmount = 0;
             Rental each = rentals.nextElement();
 
-            // 비디오 종류별 대여료 계산
-            switch (each.getMovie().getPriceCode()) {
-                case Movie.REGULAR:
-                    thisAmount += 2;
-                    if (each.getDaysRented() > 2) {
-                        thisAmount += (each.getDaysRented() - 2) * 1.5;
-                    }
-                    break;
-                case Movie.NEW_RELEASE:
-                    thisAmount += each.getDaysRented() * 3;
-                    break;
-                case Movie.CHILDREN:
-                    thisAmount += 1.5;
-                    if (each.getDaysRented() > 3) {
-                        thisAmount += (each.getDaysRented() - 3) * 1.5;
-                    }
-                    break;
-            }
+            // 비디오 종류별 대여료 계산 메서드를 호출
+            thisAmount = amountFor(each);
 
             // 적립 포인트를 1 포인트 증가
             frequentRenterPoints++;
@@ -70,5 +54,32 @@ public class Customer {
         result += "누적 대여료: " + String.valueOf(totalAmount) + "\n";
         result += "적립 포인트: " + String.valueOf(frequentRenterPoints);
         return result;
+    }
+
+    /**
+     * 대여 정보에 대한 대여료 계산
+     * @param each 대여 정보
+     * @return 대여료
+     */
+    private double amountFor(Rental each) {
+        double thisAmount = 0;
+        switch (each.getMovie().getPriceCode()) {
+            case Movie.REGULAR:
+                thisAmount += 2;
+                if (each.getDaysRented() > 2) {
+                    thisAmount += (each.getDaysRented() - 2) * 1.5;
+                }
+                break;
+            case Movie.NEW_RELEASE:
+                thisAmount += each.getDaysRented() * 3;
+                break;
+            case Movie.CHILDREN:
+                thisAmount += 1.5;
+                if (each.getDaysRented() > 3) {
+                    thisAmount += (each.getDaysRented() - 3) * 1.5;
+                }
+                break;
+        }
+        return thisAmount;
     }
 }
