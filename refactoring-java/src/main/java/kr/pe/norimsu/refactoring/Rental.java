@@ -34,6 +34,6 @@ public class Rental {
      * @return 적립 포인트
      */
     int getFrequentRenterPoints() {
-        return _movie.getFrequeentRenterPoints(_daysRented);
+        return _movie.getFrequentedRenterPoints(_daysRented);
     }
 }
