@@ -25,7 +25,7 @@ public class Rental {
      * 대여료 계산
      * @return 대여료
      */
-    double amountFor() {
+    double getChange() {
         double result = 0;
         switch (getMovie().getPriceCode()) {
             case Movie.REGULAR:
