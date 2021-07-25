@@ -1,12 +1,12 @@
 package kr.pe.norimsu.refactoring;
 
-public abstract class Price {
+public interface Price {
 
-    abstract int getPriceCode();
+    int getPriceCode();
 
-    abstract double getCharge(int daysRented);
+    double getCharge(int daysRented);
 
-    int getFrequentedRenterPoints(int daysRented) {
+    default int getFrequentedRenterPoints(int daysRented) {
         return 1;
     }
 }

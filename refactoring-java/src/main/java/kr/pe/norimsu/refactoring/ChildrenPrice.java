@@ -1,14 +1,14 @@
 package kr.pe.norimsu.refactoring;
 
-public class ChildrenPrice extends Price {
+public class ChildrenPrice implements Price {
 
     @Override
-    int getPriceCode() {
+    public int getPriceCode() {
         return Movie.CHILDREN;
     }
 
     @Override
-    double getCharge(int daysRented) {
+    public double getCharge(int daysRented) {
         double result = 1.5;
         if (daysRented > 3) {
             result += (daysRented - 3) * 1.5;

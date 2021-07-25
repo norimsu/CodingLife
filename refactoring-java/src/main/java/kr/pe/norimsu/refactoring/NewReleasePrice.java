@@ -1,19 +1,19 @@
 package kr.pe.norimsu.refactoring;
 
-public class NewReleasePrice extends Price {
+public class NewReleasePrice implements Price {
 
     @Override
-    int getPriceCode() {
+    public int getPriceCode() {
         return Movie.NEW_RELEASE;
     }
 
     @Override
-    double getCharge(int daysRented) {
-        return daysRented * 3;
+    public double getCharge(int daysRented) {
+        return daysRented * 3.0;
     }
 
     @Override
-    int getFrequentedRenterPoints(int daysRented) {
+    public int getFrequentedRenterPoints(int daysRented) {
         return (daysRented > 1) ? 2 : 1;
     }
 }
