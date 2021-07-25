@@ -1,58 +1,59 @@
 package kr.pe.norimsu.refactoring;
 
-import java.util.Enumeration;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * 고객 클래스
  */
 public class Customer {
 
-    private String _name;
-    private Vector<Rental> _rentals = new Vector<>();
+    private final String name;
+    private final List<Rental> rentals = new ArrayList<>();
 
     public Customer(String name) {
-        _name = name;
+        this.name = name;
     }
 
-    public void addRental(Rental arg) {
-        _rentals.addElement(arg);
+    public void addRental(Rental rental) {
+        rentals.add(rental);
     }
 
     public String getName() {
-        return _name;
+        return name;
     }
 
     public String statement() {
-        Enumeration<Rental> rentals = _rentals.elements();
-        String result = getName() + "고객님의 대여 기록\n";
-        while (rentals.hasMoreElements()) {
-            Rental each = rentals.nextElement();
+        Iterator<Rental> iterator = this.rentals.iterator();
+        StringBuilder result = new StringBuilder(getName() + "고객님의 대여 기록\n");
+        while (iterator.hasNext()) {
+            Rental each = iterator.next();
 
             // 이번에 대여하는 비디오 정보와 대여료를 출력
-            result += "\t" + each.getMovie().getTitle() + "\t" + each.getCharge() + "\n";
+            result.append("\t").append(each.getMovie().getTitle()).append("\t").append(each.getCharge()).append("\n");
         }
 
         // 푸터 행 추가
-        result += "누적 대여료: " + getTotalCharge() + "\n";
-        result += "적립 포인트: " + getTotalFrequentRenterPoints();
-        return result;
+        result.append("누적 대여료: ").append(getTotalCharge()).append("\n");
+        result.append("적립 포인트: ").append(getTotalFrequentRenterPoints());
+        return result.toString();
     }
 
     public String htmlStatement() {
-        Enumeration<Rental> rentals = _rentals.elements();
-        String result = "<h1><em>" + getName() + "고객님의 대여 기록</em></h1><p>\n";
-        while (rentals.hasMoreElements()) {
-            Rental each = rentals.nextElement();
+        Iterator<Rental> iterator = this.rentals.iterator();
+        StringBuilder result = new StringBuilder("<h1><em>" + getName() + "고객님의 대여 기록</em></h1><p>\n");
+        while (iterator.hasNext()) {
+            Rental each = iterator.next();
 
             // 모든 비디오 정보와 대여료를 출력
-            result += each.getMovie().getTitle() + ": " + each.getCharge() + "<br>\n";
+            result.append(each.getMovie().getTitle()).append(": ").append(each.getCharge()).append("<br>\n");
         }
 
         // 푸터 행 추가
-        result += "<p>누적 대여료: <em>" + getTotalCharge() + "</em><p>\n";
-        result += "적립 포인트: <em>" + getTotalFrequentRenterPoints() + "</em><p>";
-        return result;
+        result.append("<p>누적 대여료: <em>").append(getTotalCharge()).append("</em><p>\n");
+        result.append("적립 포인트: <em>").append(getTotalFrequentRenterPoints()).append("</em><p>");
+        return result.toString();
     }
 
     /**
@@ -61,9 +62,7 @@ public class Customer {
      */
     private double getTotalCharge() {
         double result = 0;
-        Enumeration<Rental> rentals = _rentals.elements();
-        while (rentals.hasMoreElements()) {
-            Rental each = rentals.nextElement();
+        for (Rental each : this.rentals) {
             result += each.getCharge();
         }
         return result;
@@ -75,9 +74,7 @@ public class Customer {
      */
     private int getTotalFrequentRenterPoints() {
         int result = 0;
-        Enumeration<Rental> rentals = _rentals.elements();
-        while (rentals.hasMoreElements()) {
-            Rental each = rentals.nextElement();
+        for (Rental each : this.rentals) {
             result += each.getFrequentRenterPoints();
         }
         return result;

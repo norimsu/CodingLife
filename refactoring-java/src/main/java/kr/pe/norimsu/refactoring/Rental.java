@@ -5,20 +5,20 @@ package kr.pe.norimsu.refactoring;
  */
 public class Rental {
 
-    private Movie _movie;
-    private int _daysRented;
+    private final Movie movie;
+    private final int daysRented;
 
     public Rental(Movie movie, int daysRented) {
-        _movie = movie;
-        _daysRented = daysRented;
+        this.movie = movie;
+        this.daysRented = daysRented;
     }
 
     public Movie getMovie() {
-        return _movie;
+        return movie;
     }
 
     public int getDaysRented() {
-        return _daysRented;
+        return daysRented;
     }
 
     /**
@@ -26,7 +26,7 @@ public class Rental {
      * @return 대여료
      */
     double getCharge() {
-        return _movie.getCharge(_daysRented);
+        return movie.getCharge(daysRented);
     }
 
     /**
@@ -34,6 +34,6 @@ public class Rental {
      * @return 적립 포인트
      */
     int getFrequentRenterPoints() {
-        return _movie.getFrequentedRenterPoints(_daysRented);
+        return movie.getFrequentedRenterPoints(daysRented);
     }
 }
